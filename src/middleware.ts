@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function middleware() {
     const session = await auth();
     if (!session) {
-        return NextResponse.redirect('http://localhost:3000/i/flow/login');
+        return NextResponse.redirect('http://localhost:80/i/flow/login');
     } // 로그인 정보가 없다면 로그인페이지로 리다이렉션
 }
 
