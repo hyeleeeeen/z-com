@@ -1,0 +1,50 @@
+.formContainer {
+  border-top: 1px solid #eff3f4;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  font-family: __Inter_e66fe9, __Inter_Fallback_e66fe9;
+  background: #eff3f4;
+  margin: 4px 12px;
+  border-radius: 16px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.form textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  line-height: 20px;
+  flex: 1 1;
+  outline: none;
+  height: 20px !important;
+}
+
+.form button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+}
+
+.form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.form button svg {
+  fill: #1d9bf0;
+}

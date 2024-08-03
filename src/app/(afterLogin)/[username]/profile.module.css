@@ -75,6 +75,21 @@
 .userName > div:last-child {
   font-size: 15px;
 }
+
+.message {
+  border: 1px solid #cfd9de;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  margin-right: 8px;
+  width: 34px;
+  height: 34px;
+}
+
+.message:hover {
+  background-color: rgb(15,20,25,.09)
+}
+
 .followButton {
   border: 1px solid rgb(207, 217, 222);
   padding: 0 16px;

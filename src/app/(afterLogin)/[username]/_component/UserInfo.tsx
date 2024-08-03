@@ -9,6 +9,7 @@ import { User } from "@/model/User";
 import cx from "classnames";
 import { MouseEventHandler } from "react";
 import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 
 type Props = {
   username: string;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 export default function UserInfo({ username, session }: Props) {
+  const router = useRouter();
   const { data: user, error } = useQuery<
     User,
     Object,
@@ -233,7 +235,6 @@ export default function UserInfo({ username, session }: Props) {
 
   const followed = user.Followers?.find((v) => v.id === session?.user?.email);
 
-
   const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -243,6 +244,12 @@ export default function UserInfo({ username, session }: Props) {
     } else {
       follow.mutate(user.id);
     }
+  };
+
+  const onClickRoom = () => {
+    const roomUsers = [session?.user?.email, user.id];
+    roomUsers.sort();
+    router.push(`/messages/${roomUsers.join('-')}`); // 로그인에 따라 발신자 수신자가 바뀌어도 주소가 동일해야함
   };
 
   return (
@@ -260,15 +267,25 @@ export default function UserInfo({ username, session }: Props) {
             <div>{user.nickname}</div>
             <div>@{user.id}</div>
           </div>
-        
-        {session?.user?.email === user.id || session === null ? null : (
-            <button
-              onClick={onFollow}
-              className={cx(style.followButton, followed && style.followed)}
-            >
-              {followed ? "팔로잉" : "팔로우"}
-            </button>
-        )}</div>
+
+          {session?.user?.email === user.id || session === null ? null : (
+            <>
+              <button className={style.message} onClick={onClickRoom}>
+                <svg viewBox="0 0 24 24" width="18" aria-hidden="true">
+                  <g>
+                    <path d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5v13c0 1.381-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.119-2.5-2.5v-13zm2.5-.5c-.276 0-.5.224-.5.5v2.764l8 3.638 8-3.636V5.5c0-.276-.224-.5-.5-.5h-15zm15.5 5.463l-8 3.636-8-3.638V18.5c0 .276.224.5.5.5h15c.276 0 .5-.224.5-.5v-8.037z"></path>
+                  </g>
+                </svg>
+              </button>
+              <button
+                onClick={onFollow}
+                className={cx(style.followButton, followed && style.followed)}
+              >
+                {followed ? "팔로잉" : "팔로우"}
+              </button>
+            </>
+          )}
+        </div>
         <div className={style.userFollower}>
           {" "}
           <div>{user?._count?.Followers} 팔로워</div>&nbsp;
