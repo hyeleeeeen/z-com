@@ -23,8 +23,6 @@ export default function PostRecommends() {
     gcTime: 300 * 1000,
   });
 
-  console.log(data);
-
   const { ref, inView } = useInView({ //
     threshold: 0, // inView가 보이자 마자 호출
     delay: 0, // 몇초후 이벤트 발생?

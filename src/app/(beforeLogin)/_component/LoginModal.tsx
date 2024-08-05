@@ -16,7 +16,6 @@ export default function LoginModal() {
     e.preventDefault();
     setMessage(" ");
     try {
-      console.log('1')
       const res = await signIn("credentials", {
         username: id,
         password,
@@ -30,7 +29,6 @@ export default function LoginModal() {
     } catch (err) {
       console.log(err);
       setMessage("아이디와 비밀번호가 일치하지 않습니다.");
-      console.log('3')
     }
   };
   const onClickClose = () => {

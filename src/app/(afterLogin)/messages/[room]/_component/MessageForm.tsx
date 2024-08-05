@@ -65,7 +65,6 @@ export default function MessageForm({id}: Props) {
   }
 
   const onEnter: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    console.log(e.key === 'Enter', e);
     if (e.key === 'Enter') {
       if (e.shiftKey) {
         return;

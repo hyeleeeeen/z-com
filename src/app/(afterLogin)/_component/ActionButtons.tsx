@@ -419,19 +419,6 @@ export default function ActionButtons({ white, post }: Props) {
     modalStore.setMode('comment');
     modalStore.setData(post); // zustand로 답글모드 설정
     router.push("/compose/tweet");
-    // const formData = new FormData();
-
-    // formData.append("content", "답글 테스트");
-    // fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${post.postId}/comments`,
-    //   {
-    //     method: "post",
-    //     credentials: "include",
-    //     body: formData,
-    //   }
-    // );
-    // console.log("답글테스트");
-  };
 
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
@@ -449,7 +436,6 @@ export default function ActionButtons({ white, post }: Props) {
     } else {
       heart.mutate();
     }
-    console.log("좋아요");
   };
 
   return (
@@ -505,4 +491,4 @@ export default function ActionButtons({ white, post }: Props) {
       </div>
     </div>
   );
-}
+  }}

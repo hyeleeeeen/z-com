@@ -18,7 +18,7 @@ export default async function AfterLoginLayout({ children, modal }: Props) {
   if (session) {
     console.log(session)
   } else {
-    console.log('세선없어')
+    console.log('no session')
   }
   return (
     <div className={style.container}>
