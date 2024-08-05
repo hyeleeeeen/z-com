@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import { useRouter } from "next/navigation";
-import {Room} from '@/model/Room'
+import type {Room} from '@/model/Room'
 import { useSession } from "next-auth/react";
 
 dayjs.locale("ko");
