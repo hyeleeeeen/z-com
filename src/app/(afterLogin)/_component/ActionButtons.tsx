@@ -14,10 +14,9 @@ import { useRouter } from "next/navigation";
 import { useModalStore } from "@/store/modal";
 
 type Props = {
-  white?: boolean;
-  post: Post;
-};
-
+  white?: boolean,
+  post: Post,
+}
 export default function ActionButtons({ white, post }: Props) {
   const { data: session } = useSession();
   const router = useRouter();
@@ -419,7 +418,7 @@ export default function ActionButtons({ white, post }: Props) {
     modalStore.setMode('comment');
     modalStore.setData(post); // zustand로 답글모드 설정
     router.push("/compose/tweet");
-
+  }
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     if (!reposted) {
@@ -491,4 +490,4 @@ export default function ActionButtons({ white, post }: Props) {
       </div>
     </div>
   );
-  }}
+  }
